@@ -26,6 +26,10 @@ for i in `sudo ctr image ls -q`; do
 	sudo ctr image rm --sync $i
 done
 sleep 3
+for i in `sudo ctr -n k8s.io image ls -q`; do
+    sudo ctr -n k8s.io image rm --sync $i
+done
+sleep 3
 
 echo "Clean registry cache and page cache ..."
 sudo rm -rf /opt/overlaybd/registry_cache/*
